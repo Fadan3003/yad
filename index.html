@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YadLearn</title>
+<style>
+:root{--bg:#f6f4ff;--card:#fff;--tx:#1d1b3a;--mu:#7a7796;--pr:#6c5ce7;--ok:#00b894;--ko:#e17055;--bd:#e4e0fb;--code:#14122b;--okb:#d9f7ee;--kob:#fde3dc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14122b;--card:#201d42;--tx:#f2f0ff;--mu:#9b97c4;--bd:#332f63;--code:#0b0a1a;--okb:#0f3b33;--kob:#46221b}}
+:root[data-theme="dark"]{--bg:#14122b;--card:#201d42;--tx:#f2f0ff;--mu:#9b97c4;--bd:#332f63;--code:#0b0a1a;--okb:#0f3b33;--kob:#46221b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+#app{max-width:560px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+button{font:inherit;cursor:pointer;border:0;color:inherit}
+.hd{display:flex;justify-content:space-between;align-items:center;padding:16px 20px}
+.hd b{font-size:22px}.lg{background:var(--card);border:2px solid var(--bd);border-radius:20px;padding:4px 12px;font-weight:700}.st{display:flex;gap:10px}.st span{background:var(--card);border:2px solid var(--bd);border-radius:20px;padding:4px 12px;font-weight:700}
+.un{margin:8px 20px 0;padding:16px;border-radius:20px;color:#fff}.un h3{margin:0;font-size:20px}.un p{margin:0;opacity:.85;font-size:14px}
+.path{display:flex;flex-direction:column;align-items:center;gap:18px;padding:22px 0 8px}
+.nd{width:76px;height:76px;border-radius:50%;font-size:30px;display:grid;place-items:center;color:#fff;box-shadow:0 6px 0 rgba(0,0,0,.22);transition:transform .1s;position:relative}
+.nd:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.22)}
+.nd.lk{background:var(--bd)!important;color:var(--mu);box-shadow:0 6px 0 var(--mu);opacity:.8;cursor:default}
+.nd.cur{animation:pl 1.6s infinite}@keyframes pl{50%{outline:8px solid rgba(108,92,231,.25)}}
+.nd small{position:absolute;bottom:-20px;font-size:12px;color:var(--tx);white-space:nowrap;font-weight:600}
+.top{display:flex;align-items:center;gap:14px;padding:16px 20px}
+.x{background:none;font-size:22px;color:var(--mu)}.bar{flex:1;height:14px;background:var(--bd);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);border-radius:9px;transition:width .35s}
+main{flex:1;padding:8px 22px}main h2{font-size:24px;margin:8px 0 12px}main p{color:var(--mu);font-size:17px}
+pre{background:var(--code);color:#b8f7d4;padding:16px;border-radius:16px;font:15px/1.6 ui-monospace,Menlo,Consolas,monospace;overflow-x:auto;margin:14px 0;white-space:pre-wrap}
+.o{display:block;width:100%;text-align:left;background:var(--card);border:2px solid var(--bd);border-bottom-width:4px;border-radius:16px;padding:14px 16px;margin:10px 0;font-weight:600}
+.o.s{border-color:var(--pr);background:rgba(108,92,231,.12)}.o.ok{border-color:var(--ok);background:var(--okb)}.o.ko{border-color:var(--ko);background:var(--kob)}
+.bl{display:inline-block;min-width:70px;border-bottom:2px dashed #b8f7d4;color:#fff;text-align:center;cursor:pointer}
+.ch{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.ch .o{width:auto;margin:0;font-family:ui-monospace,Menlo,Consolas,monospace}
+footer{padding:16px 22px 20px;border-top:2px solid var(--bd)}footer.ok{background:var(--okb)}footer.ko{background:var(--kob)}
+footer p{margin:0 0 10px;font-size:15px}footer p b{display:block;font-size:19px}
+.b{width:100%;background:var(--pr);color:#fff;font-weight:800;font-size:17px;padding:14px;border-radius:16px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.b:disabled{background:var(--bd);color:var(--mu);box-shadow:none;cursor:default}footer.ok .b{background:var(--ok)}footer.ko .b{background:var(--ko)}
+.fin{text-align:center;padding:50px 22px;flex:1}.fin .em{font-size:80px}.fin .sc{display:flex;gap:12px;justify-content:center;margin:24px 0}
+.fin .sc div{background:var(--card);border:2px solid var(--bd);border-radius:16px;padding:12px 18px;font-weight:800;font-size:20px}.fin .sc small{display:block;font-size:12px;color:var(--mu)}
+</style></head><body><div id="app"></div>
+<script>
+const I=(h,p,c)=>({k:"i",h,p,c}),C=(q,o,x)=>({k:"c",q,o,a:0,x}),F=(q,c,o,x)=>({k:"f",q,c,o,a:o[0],x}),T=(t,e,...s)=>({t,e,s});
+const U=[
+{n:"Unit 1 · Hello YAD",d:"Your very first windows",c:"#6c5ce7",L:[
+T("What is YAD","🪟",
+I("What is YAD?","YAD (Yet Another Dialog) lets a shell script open real windows: messages, forms, lists and more.",'$ yad --text="Hello!"'),
+C("What does YAD stand for?",["Yet Another Dialog","Your Admin Display","Yes And Done","Yet Another Desktop"],"YAD = Yet Another Dialog."),
+C("What can YAD do?",["Open GUI windows from scripts","Compile C code","Edit images only","Manage Wi-Fi"],"It builds GTK dialogs for shell scripts."),
+C("YAD is started from...",["The terminal or a script","The BIOS","The task manager only","A web browser"],"You run it like any other command.")),
+T("First window","💬",
+I("Your first window","The command is yad. Options start with -- and the value follows after =.",'$ yad --text="Hello!"'),
+F("Show the text Hi",'yad --___="Hi"',["text","title","width"],"--text sets the message."),
+F("Set the title to Setup",'yad --___="Setup"',["title","text","name"],"--title sets the title bar."),
+C("How is an option written?",['--text="Hi"','text:Hi','/text Hi','-text(Hi)'],"Double dash, name, equals, value."),
+F("Combine two options",'yad --title="App" --___="Hi"',["text","show","msg"],"Options can be combined.")),
+T("Window size","📐",
+I("Width and height","--width and --height set the size in pixels.",'$ yad --width=300 --height=100'),
+F("Set the width to 400",'yad --___=400',["width","size","wide"]),
+F("Set the height to 150",'yad --___=150',["height","tall","high"]),
+C("In which unit is --width given?",["Pixels","Centimeters","Characters","Percent"]),
+F("Center the window",'yad --___',["center","middle","mid"],"--center centers it on screen.")),
+T("Install YAD","📥",
+I("Install YAD","On Debian and Ubuntu you install YAD with apt.",'$ sudo apt install yad'),
+F("Install yad",'sudo apt ___ yad',["install","update","remove"]),
+C("Which command shows the YAD version?",["yad --version","yad -v2","yad version()","yad --info"]),
+C("apt is the package manager of...",["Debian and Ubuntu","Windows","macOS","Android"]))]},
+{n:"Unit 2 · Buttons",d:"Buttons and exit codes",c:"#e17055",L:[
+T("Default buttons","🔘",
+I("OK and Cancel","By default YAD shows an OK and a Cancel button.",'$ yad --text="Sure?"'),
+C("Which buttons appear by default?",["OK and Cancel","Yes and No","Only Close","None"]),
+I("The exit code","After yad closes, $? holds its exit code. OK gives 0, Cancel gives 1.",'$ yad --text="Sure?"\n$ echo $?'),
+C("Which exit code means OK?",["0","1","2","255"],"0 = OK."),
+C("Which variable holds the last exit code?",["$?","$!","$0","$#"]),
+F("Print the exit code",'echo ___',["$?","$!","$0"])),
+T("Custom buttons","➕",
+I("Add a button","--button=LABEL:CODE adds a button. The number is its exit code.",'$ yad --button="Save:0" --button="Quit:1"'),
+F("Add a button labeled Save",'yad --___="Save:0"',["button","btn","add"]),
+F("Give the button exit code 2",'yad --button="Maybe:___"',["2","maybe","0"],"The number after the colon."),
+C("What does the number after : do?",["Sets the exit code","Sets the width","Sets the color","Sets the order"]),
+C("How many buttons can you add?",["As many as you like","Only two","Only one","Three"],"Repeat --button.")),
+T("Use in if","🔀",
+I("YAD in an if","Exit code 0 counts as true, so yad works directly in an if.",'if yad --text="Go?"; then\n  echo yes\nfi'),
+F("Complete the if",'if yad --text="Go?"; ___\n  echo yes\nfi',["then","do","else"]),
+C("When does the then part run?",["Exit code 0","Exit code 1","Always","Never"]),
+I("Else","else runs when the user pressed Cancel.",'if yad --text="Go?"; then\n  echo yes\nelse\n  echo no\nfi'),
+F("Add the cancel branch",'if yad --text="Go?"; then echo yes\n___ echo no\nfi',["else","elif","end"]),
+C("Which line closes an if?",["fi","end","done","esac"],"fi = if backwards.")),
+T("Many buttons","🎛️",
+I("case for buttons","case $? lets you react to many buttons.",'yad --button="A:10" --button="B:20"\ncase $? in\n  10) echo A ;;\n  20) echo B ;;\nesac'),
+C("What does case $? check?",["The exit code","The window size","The title","The user name"]),
+F("Close the case block",'case $? in\n  10) echo A ;;\n___',["esac","fi","done"],"esac = case backwards."),
+C("What do ;; do?",["End a branch","Start a loop","Write a comment","Quit the script"]),
+F("Handle exit code 20",'case $? in\n  ___) echo B ;;\nesac',["20","B","1"]))]},
+{n:"Unit 3 · Input",d:"Ask the user things",c:"#00b894",L:[
+T("Entry","⌨️",
+I("Ask for text","--entry shows one input line and prints the answer.",'$ yad --entry --text="Name?"'),
+C("Where does the typed text go?",["Standard output","A file named entry","The title","Nowhere"]),
+F("Show an input line",'yad ___ --text="Name?"',["--entry","--input","--ask"]),
+I("Capture it","Wrap the command in $( ) to save the result in a variable.",'name=$(yad --entry --text="Name?")\necho "Hi $name"'),
+F("Capture the answer",'name=___(yad --entry)',["$","@","%"],"$(...) is command substitution."),
+C("Which option hides typed characters?",["--hide-text","--secret","--mask","--star"],"Useful for passwords.")),
+T("Form basics","📋",
+I("Forms","--form builds a form. Each --field adds one input.",'$ yad --form --field="Name" --field="City"'),
+F("Create a form",'yad ___ --field="Name"',["--form","--entry","--list"]),
+F("Add a field",'yad --form --___="City"',["field","input","add"]),
+C("What does one --field create?",["One input","One window","One button","One column"]),
+C("Which character separates form values?",["|",",",";","/"],"The pipe is the default.")),
+T("Field types","🧩",
+I("Field types","Write the type after a colon: Name:TYPE.",'--field="Age:NUM"\n--field="Agree:CHK"\n--field="Color:CB"'),
+C("Which type makes a checkbox?",["CHK","CB","NUM","H"]),
+F("Make a number field",'--field="Age:___"',["NUM","CHK","CB"]),
+I("Combo box","CB shows a drop-down. Give its options split by !.",'yad --form --field="Color:CB" "red!green!blue"'),
+C("What splits combo options?",["!","|",",",";"]),
+F("Make a drop-down",'--field="Pick:___"',["CB","NUM","CHK"])),
+T("Read values","📖",
+I("Read the values","Split the output at | with read and IFS.",'IFS="|" read -r name age <<< "$(yad --form --field=Name --field=Age)"'),
+C("What does IFS stand for?",["Input Field Separator","Internal File System","If Else Statement","Input From Stdin"]),
+F("Set the separator",'IFS="___" read -r a b',["|",",","-"]),
+C("In read -r name age, what is name?",["The first value","The last value","The script","The window"]),
+F("Print a value",'echo "Hello ___"',["$name","name","%name"]))]},
+{n:"Unit 4 · Lists & files",d:"Tables and file pickers",c:"#0984e3",L:[
+T("Lists","📊",
+I("Tables","--list shows a table. Each --column defines a column.",'$ yad --list --column=Name --column=Size foo 10 bar 20'),
+F("Create a list",'yad ___ --column=Name',["--list","--form","--table"]),
+F("Add a column",'yad --list --___=Name',["column","field","head"]),
+C("What are the values after the columns?",["The rows","The title","The buttons","Options"]),
+C("Two columns and six values: how many rows?",["3","6","2","12"],"6 / 2 = 3.")),
+T("List output","📤",
+I("Pick a row","The chosen row is printed, columns split by |.",'$ yad --list --column=A --column=B x 1 y 2'),
+C("What is printed when you pick row x?",["x|1|","1","A","Nothing"],"The whole row."),
+I("print-column","--print-column=N prints only column N.",'yad --list --column=A --column=B --print-column=1 x 1 y 2'),
+F("Print column 1",'yad --list --column=A --___=1 x',["print-column","col","only"]),
+F("Change the separator",'yad --list --column=A --___=, x',["separator","split","sep"])),
+T("File chooser","📁",
+I("Choose a file","--file opens a file picker and prints the path.",'$ f=$(yad --file)\n$ echo "$f"'),
+C("Which option opens a file picker?",["--file","--open","--pick","--path"]),
+F("Open the chooser",'f=$(yad ___)',["--file","--files","--choose"]),
+I("Folders","Add --directory to choose folders only.",'$ yad --file --directory'),
+F("Folders only",'yad --file --___',["directory","folder","dir-only"])),
+T("Save & multiple","💾",
+I("Save dialog","--save turns the picker into a save dialog.",'$ yad --file --save'),
+F("Open a save dialog",'yad --file --___',["save","write","store"]),
+I("Many files","--multiple lets the user select several files.",'$ yad --file --multiple'),
+C("Which option allows several files?",["--multiple","--many","--all","--list"]),
+F("Allow many files",'yad --file --___',["multiple","many","more"]))]},
+{n:"Unit 5 · Pickers",d:"Dates, colors, sliders, text",c:"#d63031",L:[
+T("Calendar","📅",
+I("Pick a date","--calendar shows a calendar and prints the date.",'$ d=$(yad --calendar)'),
+C("Which option picks a date?",["--calendar","--date","--day","--time"]),
+F("Open a calendar",'d=$(yad ___)',["--calendar","--date","--clock"]),
+I("Format","--date-format sets how the date is printed.",'yad --calendar --date-format=%Y-%m-%d'),
+F("Set the date format",'yad --calendar --___=%Y-%m-%d',["date-format","format","style"])),
+T("Color & font","🎨",
+I("Color and font","--color picks a color, --font picks a font.",'$ c=$(yad --color)\n$ f=$(yad --font)'),
+F("Pick a color",'c=$(yad ___)',["--color","--paint","--rgb"]),
+F("Pick a font",'f=$(yad ___)',["--font","--text","--type"]),
+C("What does --color print?",["A color code","A file","A font","A date"])),
+T("Sliders","🎚️",
+I("Slider","--scale shows a slider and prints the value.",'$ yad --scale'),
+F("Show a slider",'yad ___',["--scale","--slide","--range"]),
+F("Set the minimum",'yad --scale --___=10',["min-value","min","low"]),
+F("Set the maximum",'yad --scale --___=90',["max-value","max","high"]),
+C("What does --scale print?",["The chosen number","The title","A file","A date"])),
+T("Text viewer","📄",
+I("Show text","--text-info shows long text with scrollbars.",'$ cat notes.txt | yad --text-info'),
+C("Where does it read the text from?",["Standard input","A web URL","Only the clipboard","Nowhere"]),
+F("Show text from a pipe",'echo Hi | yad ___',["--text-info","--text","--show"]),
+I("From a file","--filename loads a file directly.",'$ yad --text-info --filename=notes.txt'),
+F("Load a file",'yad --text-info --___=notes.txt',["filename","file","path"]))]},
+{n:"Unit 6 · Polish",d:"Make real apps",c:"#8e44ad",L:[
+T("Icons","🖼️",
+I("Icons","--image adds an icon in the window, --window-icon changes the title bar icon.",'$ yad --image=dialog-warning --text="Careful"'),
+F("Add an icon",'yad --___=dialog-information',["image","icon","pic"]),
+F("Change the title bar icon",'yad --___=dialog-error',["window-icon","title-icon","bar"]),
+C("Which is a built-in icon name?",["dialog-warning","big-red","icon1","warn.exe"],"Theme icon names work.")),
+T("Progress","⏳",
+I("Progress bar","--progress reads numbers 0-100 from stdin.",'$ (echo 25; sleep 1; echo 100) | yad --progress'),
+F("Show a progress bar",'(echo 50) | yad ___',["--progress","--bar","--load"]),
+C("Which numbers does it read?",["0 to 100","1 to 10","0 to 255","Any text"]),
+I("Auto close","--auto-close closes the window at 100%.",'(echo 100) | yad --progress --auto-close'),
+F("Close at 100%",'yad --progress --___',["auto-close","autoclose","done"])),
+T("Tray icon","🔔",
+I("Tray icon","--notification puts an icon in the system tray.",'$ yad --notification --image=info --text="Ready"'),
+F("Create a tray icon",'yad ___ --image=info',["--notification","--tray","--icon"]),
+I("Click action","--command runs when the icon is clicked.",'yad --notification --command="echo hi"'),
+F("Run on click",'yad --notification --___="echo hi"',["command","click","run"]),
+C("Where does the icon appear?",["System tray","Wallpaper","Terminal","Taskbar clock"])),
+T("Window options","🪛",
+I("Handy options","--timeout=N closes the window after N seconds.",'$ yad --text="Hi" --timeout=5'),
+C("--timeout=5 closes the window after...",["5 seconds","5 minutes","5 clicks","5 pixels"]),
+F("Keep the window on top",'yad --___',["on-top","top","front"]),
+F("Hide the buttons",'yad --___',["no-buttons","hide","nobtn"]),
+F("Disable resizing",'yad --___',["fixed","lock","static"])),
+T("Menu loop","🔁",
+I("A menu loop","yad exits non-zero on Cancel, so a while loop ends then.",'while c=$(yad --list --column=A one two); do\n  echo "$c"\ndone'),
+C("Why does the loop end on Cancel?",["Cancel returns non-zero","YAD deletes it","A timeout","It never ends"]),
+F("Start the loop",'___ c=$(yad --list --column=A one); do',["while","for","if"]),
+F("Close the loop",'while c=$(yad --list --column=A one); do\n  echo "$c"\n___',["done","fi","end"]),
+C("Which keyword closes a while loop?",["done","fi","esac","end"])),
+T("Mini project","🚀",
+I("Launcher project","Combine list, if and a loop to build a small launcher.",'c=$(yad --list --column=App Firefox Terminal --print-column=1 --separator="")'),
+F("Show the app list",'c=$(yad ___ --column=App Firefox)',["--list","--form","--file"]),
+C('Why --separator=""?',["Removes the trailing |","Adds a pipe","Sorts the rows","Hides rows"]),
+I("Run it","Use if to start the chosen app.",'if [ "$c" = "Terminal" ]; then xterm; fi'),
+F("Compare the choice",'if [ "$c" ___ "Terminal" ]; then xterm; fi',["=","==>","->"]))]}];
+const flat=[];U.forEach((u,i)=>u.L.forEach((l,j)=>flat.push({...l,u,ui:i,li:j,id:l.t})));
+const A=document.getElementById("app");
+const e=t=>String(t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+let S={xp:0,st:0,last:"",done:{}};
+try{Object.assign(S,JSON.parse(localStorage.getItem("yl")||"{}"))}catch(_){}
+const save=()=>{try{localStorage.setItem("yl",JSON.stringify(S))}catch(_){}};
+const shuf=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+const DE=[
+["Einheit 1 · Hallo YAD","Deine ersten Fenster",[
+["Was ist YAD",[["Was ist YAD?","YAD (Yet Another Dialog) lässt ein Shell-Skript echte Fenster öffnen: Nachrichten, Formulare, Listen und mehr."],["Wofür steht YAD?",null,"YAD = Yet Another Dialog."],["Was kann YAD?",["GUI-Fenster aus Skripten öffnen","C-Code kompilieren","Nur Bilder bearbeiten","WLAN verwalten"],"Es baut GTK-Dialoge für Shell-Skripte."],["YAD startet man aus...",["dem Terminal oder einem Skript","dem BIOS","nur dem Task-Manager","einem Webbrowser"],"Du startest es wie jeden anderen Befehl."]]],
+["Erstes Fenster",[["Dein erstes Fenster","Der Befehl heißt yad. Optionen beginnen mit -- und der Wert folgt nach dem =."],["Zeige den Text Hi","--text legt die Nachricht fest."],["Setze den Titel auf Setup","--title legt die Titelleiste fest."],["Wie schreibt man eine Option?",null,"Doppelstrich, Name, Gleichheitszeichen, Wert."],["Kombiniere zwei Optionen","Optionen lassen sich kombinieren."]]],
+["Fenstergröße",[["Breite und Höhe","--width und --height legen die Größe in Pixeln fest."],["Setze die Breite auf 400"],["Setze die Höhe auf 150"],["In welcher Einheit wird --width angegeben?",["Pixel","Zentimeter","Zeichen","Prozent"]],["Zentriere das Fenster","--center zentriert es auf dem Bildschirm."]]],
+["YAD installieren",[["YAD installieren","Unter Debian und Ubuntu installierst du YAD mit apt."],["Installiere yad"],["Welcher Befehl zeigt die YAD-Version?"],["apt ist der Paketmanager von...",["Debian und Ubuntu","Windows","macOS","Android"]]]]]],
+["Einheit 2 · Buttons","Buttons und Exit-Codes",[
+["Standard-Buttons",[["OK und Abbrechen","YAD zeigt standardmäßig einen OK- und einen Abbrechen-Button."],["Welche Buttons erscheinen standardmäßig?",["OK und Abbrechen","Ja und Nein","Nur Schließen","Keine"]],["Der Exit-Code","Nach dem Schließen enthält $? den Exit-Code von yad. OK ergibt 0, Abbrechen ergibt 1."],["Welcher Exit-Code bedeutet OK?",null,"0 = OK."],["Welche Variable enthält den letzten Exit-Code?"],["Gib den Exit-Code aus"]]],
+["Eigene Buttons",[["Button hinzufügen","--button=LABEL:CODE fügt einen Button hinzu. Die Zahl ist sein Exit-Code."],["Füge einen Button mit dem Label Save hinzu"],["Gib dem Button den Exit-Code 2","Die Zahl nach dem Doppelpunkt."],["Was bewirkt die Zahl nach dem :?",["Sie setzt den Exit-Code","Sie setzt die Breite","Sie setzt die Farbe","Sie setzt die Reihenfolge"]],["Wie viele Buttons kannst du hinzufügen?",["So viele du willst","Nur zwei","Nur einen","Drei"],"Wiederhole --button."]]],
+["In if nutzen",[["YAD in einem if","Exit-Code 0 zählt als wahr, daher kann yad direkt in einem if stehen."],["Vervollständige das if"],["Wann läuft der then-Teil?",["Exit-Code 0","Exit-Code 1","Immer","Nie"]],["Else","else läuft, wenn der Nutzer Abbrechen gedrückt hat."],["Ergänze den Abbrechen-Zweig"],["Welche Zeile schließt ein if?",null,"fi = if rückwärts."]]],
+["Viele Buttons",[["case für Buttons","Mit case $? reagierst du auf viele Buttons."],["Was prüft case $??",["Den Exit-Code","Die Fenstergröße","Den Titel","Den Benutzernamen"]],["Schließe den case-Block","esac = case rückwärts."],["Was bewirkt ;;?",["Beendet einen Zweig","Startet eine Schleife","Schreibt einen Kommentar","Beendet das Skript"]],["Behandle Exit-Code 20"]]]]],
+["Einheit 3 · Eingabe","Frag den Nutzer",[
+["Eingabe",[["Nach Text fragen","--entry zeigt eine Eingabezeile und gibt die Antwort aus."],["Wohin geht der eingegebene Text?",["Auf die Standardausgabe","In eine Datei namens entry","In den Titel","Nirgendwohin"]],["Zeige eine Eingabezeile"],["Antwort speichern","Pack den Befehl in $( ), um das Ergebnis in einer Variable zu speichern."],["Speichere die Antwort","$(...) ist Befehlsersetzung."],["Welche Option versteckt die eingegebenen Zeichen?",null,"Nützlich für Passwörter."]]],
+["Formular-Grundlagen",[["Formulare","--form baut ein Formular. Jedes --field fügt ein Eingabefeld hinzu."],["Erstelle ein Formular"],["Füge ein Feld hinzu"],["Was erzeugt ein --field?",["Ein Eingabefeld","Ein Fenster","Einen Button","Eine Spalte"]],["Welches Zeichen trennt Formularwerte?",null,"Der senkrechte Strich ist der Standard."]]],
+["Feldtypen",[["Feldtypen","Schreibe den Typ nach einem Doppelpunkt: Name:TYP."],["Welcher Typ erzeugt eine Checkbox?"],["Erstelle ein Zahlenfeld"],["Combobox","CB zeigt ein Dropdown. Trenne die Optionen mit !."],["Was trennt Combobox-Optionen?"],["Erstelle ein Dropdown"]]],
+["Werte auslesen",[["Werte auslesen","Teile die Ausgabe mit read und IFS am | auf."],["Wofür steht IFS?",["Input Field Separator (Feldtrenner)","Internal File System","If Else Statement","Input From Stdin"]],["Setze den Trenner"],["Was ist name bei read -r name age?",["Der erste Wert","Der letzte Wert","Das Skript","Das Fenster"]],["Gib einen Wert aus"]]]]],
+["Einheit 4 · Listen & Dateien","Tabellen und Dateiauswahl",[
+["Listen",[["Tabellen","--list zeigt eine Tabelle. Jedes --column definiert eine Spalte."],["Erstelle eine Liste"],["Füge eine Spalte hinzu"],["Was sind die Werte nach den Spalten?",["Die Zeilen","Der Titel","Die Buttons","Optionen"]],["Zwei Spalten und sechs Werte: Wie viele Zeilen?",null,"6 / 2 = 3."]]],
+["Listenausgabe",[["Zeile wählen","Die gewählte Zeile wird ausgegeben, die Spalten sind durch | getrennt."],["Was wird ausgegeben, wenn du Zeile x wählst?",["x|1|","1","A","Nichts"],"Die ganze Zeile."],["print-column","--print-column=N gibt nur Spalte N aus."],["Gib Spalte 1 aus"],["Ändere den Trenner"]]],
+["Dateiauswahl",[["Datei auswählen","--file öffnet einen Dateiauswähler und gibt den Pfad aus."],["Welche Option öffnet einen Dateiauswähler?"],["Öffne den Auswähler"],["Ordner","Mit --directory wählst du nur Ordner aus."],["Nur Ordner"]]],
+["Speichern & mehrere",[["Speichern-Dialog","--save macht aus dem Auswähler einen Speichern-Dialog."],["Öffne einen Speichern-Dialog"],["Viele Dateien","--multiple erlaubt die Auswahl mehrerer Dateien."],["Welche Option erlaubt mehrere Dateien?"],["Erlaube viele Dateien"]]]]],
+["Einheit 5 · Auswahl","Datum, Farbe, Slider, Text",[
+["Kalender",[["Datum wählen","--calendar zeigt einen Kalender und gibt das Datum aus."],["Welche Option wählt ein Datum?"],["Öffne einen Kalender"],["Format","--date-format legt fest, wie das Datum ausgegeben wird."],["Setze das Datumsformat"]]],
+["Farbe & Schrift",[["Farbe und Schrift","--color wählt eine Farbe, --font eine Schriftart."],["Wähle eine Farbe"],["Wähle eine Schriftart"],["Was gibt --color aus?",["Einen Farbcode","Eine Datei","Eine Schrift","Ein Datum"]]]],
+["Slider",[["Slider","--scale zeigt einen Slider und gibt den Wert aus."],["Zeige einen Slider"],["Setze das Minimum"],["Setze das Maximum"],["Was gibt --scale aus?",["Die gewählte Zahl","Den Titel","Eine Datei","Ein Datum"]]]],
+["Text-Viewer",[["Text anzeigen","--text-info zeigt langen Text mit Scrollbalken."],["Woher liest es den Text?",["Von der Standardeingabe","Von einer Web-URL","Nur aus der Zwischenablage","Von nirgends"]],["Zeige Text aus einer Pipe"],["Aus einer Datei","--filename lädt eine Datei direkt."],["Lade eine Datei"]]]]],
+["Einheit 6 · Feinschliff","Echte Apps bauen",[
+["Icons",[["Icons","--image fügt ein Icon im Fenster hinzu, --window-icon ändert das Icon der Titelleiste."],["Füge ein Icon hinzu"],["Ändere das Icon der Titelleiste"],["Welcher Name ist ein eingebautes Icon?",["dialog-warning","big-red","icon1","warn.exe"],"Icon-Namen aus dem Theme funktionieren."]]],
+["Fortschritt",[["Fortschrittsbalken","--progress liest Zahlen von 0 bis 100 von stdin."],["Zeige einen Fortschrittsbalken"],["Welche Zahlen liest es?",["0 bis 100","1 bis 10","0 bis 255","Beliebiger Text"]],["Automatisch schließen","--auto-close schließt das Fenster bei 100 %."],["Bei 100 % schließen"]]],
+["Tray-Icon",[["Tray-Icon","--notification legt ein Icon in den Infobereich der Taskleiste."],["Erstelle ein Tray-Icon"],["Klick-Aktion","--command läuft, wenn man auf das Icon klickt."],["Führe beim Klick etwas aus"],["Wo erscheint das Icon?",["Im Infobereich","Auf dem Hintergrundbild","Im Terminal","In der Uhr der Taskleiste"]]]],
+["Fensteroptionen",[["Praktische Optionen","--timeout=N schließt das Fenster nach N Sekunden."],["--timeout=5 schließt das Fenster nach...",["5 Sekunden","5 Minuten","5 Klicks","5 Pixeln"]],["Halte das Fenster im Vordergrund"],["Verstecke die Buttons"],["Verhindere Größenänderung"]]],
+["Menü-Schleife",[["Eine Menü-Schleife","yad beendet sich bei Abbrechen mit einem Wert ungleich 0, daher endet eine while-Schleife dann."],["Warum endet die Schleife bei Abbrechen?",["Abbrechen liefert einen Wert ungleich 0","YAD löscht sie","Ein Timeout","Sie endet nie"]],["Starte die Schleife"],["Schließe die Schleife"],["Welches Schlüsselwort schließt eine while-Schleife?"]]],
+["Mini-Projekt",[["Launcher-Projekt","Kombiniere Liste, if und eine Schleife, um einen kleinen Launcher zu bauen."],["Zeige die App-Liste"],['Warum --separator=""?',["Entfernt das abschließende |","Fügt einen senkrechten Strich hinzu","Sortiert die Zeilen","Versteckt Zeilen"]],["Starten","Nutze if, um die gewählte App zu starten."],["Vergleiche die Auswahl"]]]]]];
+const UI={en:{ck:"Check",co:"Continue",ok:"Correct! +10 XP",ko:"Not quite",an:"Answer: ",done:"Lesson complete!",xp:"XP",ac:"ACCURACY",stk:"STREAK",rs:"Reset progress",rs2:"Tap again to reset"},de:{ck:"Prüfen",co:"Weiter",ok:"Richtig! +10 XP",ko:"Nicht ganz",an:"Antwort: ",done:"Lektion geschafft!",xp:"XP",ac:"GENAUIGKEIT",stk:"SERIE",rs:"Fortschritt zurücksetzen",rs2:"Nochmal tippen zum Zurücksetzen"}};
+const de=()=>S.lang==="de",g=k=>UI[de()?"de":"en"][k];
+const tt=f=>de()?DE[f.ui][2][f.li][0]:f.t;
+function loc(s,f,i){if(!de())return s;const e=DE[f.ui][2][f.li][1][i];if(s.k==="i")return{...s,h:e[0],p:e[1]};if(s.k==="c")return{...s,q:e[0],o:e[1]||s.o,x:e[2]||s.x};return{...s,q:e[0],x:e[1]||s.x}}
+function tgl(){S.lang=de()?"en":"de";save();home()}
+function pl(l){S.lang=l;save();home()}
+function chooser(){A.innerHTML=`<div class="fin"><div class="em">🪟</div><h1>YadLearn</h1><p style="color:var(--mu)">Choose your learning language<br>Wähle deine Lernsprache</p><button class="b" style="margin:18px 0 10px" onclick="pl('en')">English</button><button class="b" onclick="pl('de')">Deutsch</button></div>`}
+let L;
+function home(){
+ let h=`<div class="hd"><b>🪟 YadLearn</b><div class="st"><button class="lg" onclick="tgl()">🌐 ${de()?"DE":"EN"}</button><span>🔥 ${S.st}</span><span>⚡ ${S.xp}</span></div></div>`;
+ U.forEach((u,ui)=>{h+=`<div class="un" style="background:${u.c}"><h3>${de()?DE[ui][0]:u.n}</h3><p>${de()?DE[ui][1]:u.d}</p></div><div class="path">`;
+  flat.filter(f=>f.ui===ui).forEach(f=>{const i=flat.indexOf(f),open=i===0||S.done[flat[i-1].id],dn=S.done[f.id],off=[0,38,0,-38][i%4];
+   h+=`<button class="nd ${open?(dn?"":"cur"):"lk"}" style="background:${u.c};transform:translateX(${off}px)" ${open?`onclick="lesson('${f.id}')"`:""}>${dn?"✓":open?f.e:"🔒"}<small>${tt(f)}</small></button>`});
+  h+=`</div><div style="height:14px"></div>`});
+ h+=`<p style="text-align:center;padding-bottom:20px"><button class="x" style="font-size:13px" onclick="rst(this)">${g("rs")}</button></p>`;A.innerHTML=h}
+function rst(b){if(!b.dataset.s){b.dataset.s=1;b.textContent=g("rs2");return}S={xp:0,st:0,last:"",done:{},lang:S.lang};save();home()}
+function shell(b,f){A.innerHTML=`<div class="top"><button class="x" onclick="home()">✕</button><div class="bar"><i style="width:${L.d/L.n*100}%"></i></div></div><main>${b}</main><footer id="ft">${f}</footer>`}
+function lesson(id){const l=flat.find(x=>x.id===id);L={l,q:l.s.map((s,i)=>loc(s,l,i)),n:l.s.length,d:0,xp:0,err:0};step()}
+function step(){
+ if(!L.q.length)return fin();
+ const s=L.q[0];L.sel=null;L.lock=false;
+ const chk=`<button class="b" id="ck" disabled onclick="check()">${g("ck")}</button>`;
+ if(s.k==="i")return shell(`<h2>${e(s.h)}</h2><p>${e(s.p)}</p><pre>${e(s.c)}</pre>`,`<button class="b" onclick="nxt(1)">${g("co")}</button>`);
+ if(s.k==="c"){L.o=shuf(s.o.map((t,i)=>({t,ok:i===s.a})));
+  return shell(`<h2>${e(s.q)}</h2>`+L.o.map((o,i)=>`<button class="o" id="o${i}" onclick="pick(${i})">${e(o.t)}</button>`).join(""),chk)}
+ L.o=shuf(s.o);
+ shell(`<h2>${e(s.q)}</h2><pre>${e(s.c).replace("___",'<span class="bl" id="bl" onclick="unp()">&nbsp;</span>')}</pre><div class="ch">${L.o.map((t,i)=>`<button class="o" id="o${i}" onclick="pick(${i})">${e(t)}</button>`).join("")}</div>`,chk)}
+function pick(i){if(L.lock)return;const s=L.q[0];
+ if(s.k==="c"){document.querySelectorAll(".o").forEach(b=>b.classList.remove("s"));document.getElementById("o"+i).classList.add("s");L.sel=i}
+ else{unp();L.sel=L.o[i];L.si=i;document.getElementById("bl").textContent=L.sel;document.getElementById("o"+i).style.visibility="hidden"}
+ document.getElementById("ck").disabled=false}
+function unp(){if(L.lock||L.sel==null||L.q[0].k!=="f")return;document.getElementById("o"+L.si).style.visibility="";document.getElementById("bl").innerHTML="&nbsp;";L.sel=null;document.getElementById("ck").disabled=true}
+function check(){const s=L.q[0];L.lock=true;let ok,ans;
+ if(s.k==="c"){ok=L.o[L.sel].ok;ans=s.o[s.a];document.getElementById("o"+L.sel).classList.add(ok?"ok":"ko");if(!ok){const c=L.o.findIndex(o=>o.ok);document.getElementById("o"+c).classList.add("ok")}}
+ else{ok=L.sel===s.a;ans=s.a}
+ if(ok)L.xp+=10;else L.err++;
+ const f=document.getElementById("ft");f.className=ok?"ok":"ko";
+ f.innerHTML=`<p><b>${ok?g("ok"):g("ko")}</b>${ok?"":g("an")+e(ans)+(s.x?" – ":"")}${e(s.x||"")}</p><button class="b" onclick="nxt(${ok?1:0})">${g("co")}</button>`}
+function nxt(ok){const s=L.q.shift();if(ok)L.d++;else L.q.push(s);step()}
+function fin(){
+ const gain=L.xp+20,t=new Date().toDateString(),y=new Date(Date.now()-864e5).toDateString();
+ if(S.last!==t){S.st=S.last===y?S.st+1:1;S.last=t}
+ S.xp+=gain;S.done[L.l.id]=1;save();
+ const q=L.l.s.filter(s=>s.k!=="i").length,acc=Math.max(0,Math.round(100*q/(q+L.err)));
+ A.innerHTML=`<div class="fin"><div class="em">🎉</div><h1>${g("done")}</h1><p style="color:var(--mu)">${e(tt(L.l))}</p><div class="sc"><div>⚡ ${gain}<small>${g("xp")}</small></div><div>🎯 ${acc}%<small>${g("ac")}</small></div><div>🔥 ${S.st}<small>${g("stk")}</small></div></div><button class="b" onclick="home()">${g("co")}</button></div>`}
+S.lang?home():chooser();
+</script></body></html>
